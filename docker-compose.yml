@@ -1,0 +1,19 @@
+services:
+  gateway:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      GATEWAY_API_KEYS: demo-key-123
+      RATE_LIMIT_RPM: "60"
+      DEFAULT_PROVIDER: mock
+      # To use a real provider, uncomment and fill in:
+      # OPENAI_API_KEY: sk-...
+      # OPENAI_BASE_URL: https://api.openai.com/v1
+      # LLM_MODEL: gpt-4o-mini
+      # DEFAULT_PROVIDER: openai
+    volumes:
+      - gateway-data:/app/data
+
+volumes:
+  gateway-data:
