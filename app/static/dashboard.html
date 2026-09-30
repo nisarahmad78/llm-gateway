@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LLM Gateway — Observability Dashboard</title>
+  <link rel="stylesheet" href="/static/dashboard.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">⬡</span>
+      <div>
+        <h1>LLM Gateway</h1>
+        <p>Observability dashboard</p>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <span id="health-pill" class="pill pill-muted">checking…</span>
+      <span class="updated">Updated <span id="updated-at">—</span></span>
+    </div>
+  </header>
+
+  <main>
+    <section class="cards">
+      <article class="card">
+        <h2>Total requests</h2>
+        <p class="metric" id="stat-requests">—</p>
+        <p class="sub"><span id="stat-ok">—</span> ok · <span id="stat-errors">—</span> errors</p>
+      </article>
+      <article class="card">
+        <h2>Total tokens</h2>
+        <p class="metric" id="stat-tokens">—</p>
+        <p class="sub"><span id="stat-prompt-tokens">—</span> prompt · <span id="stat-completion-tokens">—</span> completion</p>
+      </article>
+      <article class="card">
+        <h2>Estimated cost</h2>
+        <p class="metric" id="stat-cost">—</p>
+        <p class="sub">across all providers</p>
+      </article>
+      <article class="card">
+        <h2>Average latency</h2>
+        <p class="metric" id="stat-latency">—</p>
+        <p class="sub">per completed request</p>
+      </article>
+    </section>
+
+    <section class="panels">
+      <article class="panel">
+        <h2>Requests by model</h2>
+        <div id="by-model" class="bars"><p class="empty">No traffic yet — run <code>python seed_demo.py</code>.</p></div>
+      </article>
+      <article class="panel">
+        <h2>Requests by provider</h2>
+        <div id="by-provider" class="bars"><p class="empty">No traffic yet.</p></div>
+      </article>
+    </section>
+
+    <section class="panel">
+      <h2>Recent requests</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Time (UTC)</th>
+              <th>Key</th>
+              <th>Model</th>
+              <th>Provider</th>
+              <th>Tokens (in/out)</th>
+              <th>Latency</th>
+              <th>Cost</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="requests-body">
+            <tr><td colspan="8" class="empty">No requests logged yet.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>LLM Gateway · auto-refreshes every 5 seconds · data from the local request log</p>
+  </footer>
+
+  <script src="/static/dashboard.js"></script>
+</body>
+</html>
