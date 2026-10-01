@@ -9,6 +9,12 @@ The gateway runs **fully offline out of the box** on a built-in mock
 provider, so you can clone it and see the whole system working in under a
 minute — no API keys required.
 
+## Screenshots
+
+![LLM Gateway UI](docs/screenshot.png)
+
+The observability dashboard after demo traffic: total requests, tokens, estimated cost and average latency, per-model/provider breakdowns, and the recent-requests log with status for every call.
+
 ## Architecture
 
 ```mermaid
